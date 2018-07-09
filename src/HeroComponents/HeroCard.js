@@ -5,7 +5,7 @@ export default class HeroCard extends React.Component {
   render() {
     return (
       <li>
-        {this.props.hero.name} - {this.props.hero.power}
+        {this.props.hero.name}
       </li>
     )
   }
