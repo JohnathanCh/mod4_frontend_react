@@ -1,13 +1,20 @@
 import React from 'react';
+import HeroCard from './HeroCard'
 
-export default class HeroList extends React.Components {
+const HeroList = (props) => {
 
-    render () {
-        return (
-            <div>
-                <h4>Hello from the Hero List</h4>
-            </div>
-        )
-    }
+  const heroes = props.heroes.map((hero) => {
+    return <HeroCard key={hero.name} hero={hero}/>
+  });
+
+    return(
+      <div>
+        <ul>
+          {heroes}
+        </ul>
+      </div>
+    )
 
 }
+
+export default HeroList;
