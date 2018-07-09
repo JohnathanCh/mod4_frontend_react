@@ -10,5 +10,6 @@ ReactDOM.render(
         <NavBar />
         <App />
     </div>,
-    document.getElementById('root'));
+    document.getElementById('root')
+  );
 registerServiceWorker();
