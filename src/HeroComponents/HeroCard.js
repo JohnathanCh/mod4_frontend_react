@@ -6,7 +6,7 @@ export default class HeroCard extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="heroCard">
                 <h1>Hello from the Hero Card</h1>
             </div>
         )
