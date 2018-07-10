@@ -3,6 +3,7 @@ import './App.css';
 import HeroList from './HeroComponents/HeroList'
 import TeamsList from './TeamComponents/teamsList'
 import HeroContainer from './HeroComponents/HeroContainer';
+import Login from './Login/Login';
 
 class App extends Component {
 
@@ -10,7 +11,8 @@ class App extends Component {
     super();
 
     this.state = {
-      heroList: []
+      heroList: [],
+      loggedIn: false,
     }
   }
 
@@ -33,8 +35,9 @@ class App extends Component {
   render() {
     return (
       <div>
+        {this.state.loggedIn === false ? <Login /> : <div>
         <HeroList heroes={this.state.heroList}/>
-        <TeamsList />
+        <TeamsList /> </div>}
       </div>
     );
   }
