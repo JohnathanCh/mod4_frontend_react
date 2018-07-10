@@ -4,6 +4,7 @@ import HeroList from './HeroComponents/HeroList'
 import TeamsList from './TeamComponents/teamsList'
 import HeroContainer from './HeroComponents/HeroContainer';
 import Login from './Login/Login';
+import NavBar from './navbar'
 
 class App extends Component {
 
@@ -13,6 +14,7 @@ class App extends Component {
     this.state = {
       heroList: [],
       loggedIn: false,
+      currentTeam: {},
     }
   }
 

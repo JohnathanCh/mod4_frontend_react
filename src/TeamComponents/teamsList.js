@@ -1,5 +1,5 @@
 import React from 'react';
-import Team from './team'
+// import Team from './team'
 
 class TeamsList extends React.Component {
   render() {
