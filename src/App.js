@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import HeroContainer from './HeroComponents/HeroContainer';
 import HeroList from './HeroComponents/HeroList'
+import HeroContainer from './HeroComponents/HeroContainer';
 
 class App extends Component {
 
@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   fetchHeroList() {
-    fetch('http://localhost:3001/api/v1/heroes')
+    fetch('http://localhost:3000/api/v1/heroes')
     .then(resp => resp.json())
     .then(heroList => {
       this.setState({
@@ -31,12 +31,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-          <h1>Hello from the App</h1>
-          <HeroContainer />
-      {/* <div>
-        <HeroList heroes={this.state.heroList}/> */}
-
+      <div>
+        <HeroList heroes={this.state.heroList}/>
       </div>
     );
   }
