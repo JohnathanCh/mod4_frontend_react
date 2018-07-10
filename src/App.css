@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  /* align-content: center; */
+  /* display: flex; */
 }
 
 .App-logo {
@@ -25,4 +27,14 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.heroContainer {
+  width: 30%;
+  /* display: flex; */
+  border: 3px solid black;
+}
+
+.heroCard {
+  border: 5px dotted teal;
 }
