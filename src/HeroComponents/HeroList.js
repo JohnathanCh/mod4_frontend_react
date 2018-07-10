@@ -8,7 +8,7 @@ const HeroList = (props) => {
   });
 
     return(
-      <div>
+      <div className="card hero-list" style={{width: "16rem"}}>
         <ul>
           {heroes}
         </ul>
