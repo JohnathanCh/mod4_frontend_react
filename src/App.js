@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import HeroList from './HeroComponents/HeroList'
+import TeamsList from './TeamComponents/teamsList'
 import HeroContainer from './HeroComponents/HeroContainer';
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
     return (
       <div>
         <HeroList heroes={this.state.heroList}/>
+        <TeamsList />
       </div>
     );
   }
