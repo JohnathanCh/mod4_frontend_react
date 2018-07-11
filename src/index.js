@@ -7,7 +7,6 @@ import NavBar from './navbar';
 
 ReactDOM.render(
     <div>
-        <NavBar />
         <App />
     </div>,
     document.getElementById('root')
