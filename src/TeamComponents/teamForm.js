@@ -25,7 +25,7 @@ class TeamForm extends React.Component {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        this.state.teamName
+        teamName: this.state.teamName
       })
     }
 
