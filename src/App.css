@@ -38,3 +38,9 @@
 .heroCard {
   border: 5px dotted teal;
 }
+
+.logout {
+  align-content: right;
+  width: 100px;
+  height: 30px;
+}

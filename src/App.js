@@ -30,14 +30,35 @@ class App extends Component {
         heroList
       })
     })
+  }
+
+  teamLogin = (team) => {
+    console.log("team login");
+    console.log(team);
+    
+    this.setState({
+      loggedIn: true,
+      currentTeam: team,
+    })
 
   }
 
+  teamLogout = () => {
+    this.setState({
+      loggedIn: false,
+      currentTeam: {},
+    })
+  }
 
   render() {
+    console.log("App State");
+    console.log(this.state);
+    
+    
     return (
       <div>
-        {this.state.loggedIn === false ? <Login /> : <div>
+      <NavBar teamLogout={this.teamLogout} loggedIn={this.state.loggedIn} />
+        {this.state.loggedIn === false ? <Login teamLogin={this.teamLogin} /> : <div>
         <HeroList heroes={this.state.heroList}/>
         <TeamsList /> </div>}
       </div>
