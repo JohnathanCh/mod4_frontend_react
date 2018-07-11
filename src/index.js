@@ -6,13 +6,8 @@ import registerServiceWorker from './registerServiceWorker';
 import NavBar from './navbar';
 
 ReactDOM.render(
-    <div className="container">
-        <div>
-          <NavBar />
-        </div>
-        <div>
-          <App />
-        </div>
+    <div>
+        <App />
     </div>,
     document.getElementById('root')
   );

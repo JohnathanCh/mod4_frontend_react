@@ -3,6 +3,8 @@ import './App.css';
 import HeroList from './HeroComponents/HeroList'
 import TeamsList from './TeamComponents/teamsList'
 import HeroContainer from './HeroComponents/HeroContainer';
+import Login from './Login/Login';
+import NavBar from './navbar'
 
 class App extends Component {
 
@@ -12,8 +14,26 @@ class App extends Component {
     this.state = {
       heroList: [],
       teamList: [],
-      team: []
+      currentTeam: {},
+      loggedIn: false
     }
+  }
+  
+    teamLogin = (team) => {
+    console.log("team login");
+    console.log(team);
+    
+    this.setState({
+      loggedIn: true,
+      currentTeam: team,
+    })
+  }
+  
+      teamLogout = () => {
+    this.setState({
+      loggedIn: false,
+      currentTeam: {},
+    })
   }
 
   componentDidMount() {
@@ -21,15 +41,15 @@ class App extends Component {
   }
 
   fetchHeroList() {
-    fetch('http://localhost:3001/api/v1/heroes')
+    fetch('http://localhost:3000/api/v1/heroes')
     .then(resp => resp.json())
     .then(heroList => {
       this.setState({
         heroList
       })
     })
-
   }
+
 
   addHeroToTeam = (hero) => {
     if(this.state.team.includes(hero)) {
@@ -49,25 +69,23 @@ class App extends Component {
       team: [...newTeam]
     })
   }
+  
 
 
   render() {
-    console.log("team List in app");
-    console.log(this.state.teamList);
-    console.log(this.state.team);
 
     return (
       <div className="row">
         <div className="col-4">
-          <HeroList heroes={this.state.heroList} addHeroToTeam={this.addHeroToTeam}/>
+        <NavBar teamLogout={this.teamLogout} loggedIn={this.state.loggedIn} />
+        {this.state.loggedIn === false ? <Login teamLogin={this.teamLogin} /> : { <HeroList heroes={this.state.heroList} addHeroToTeam={this.addHeroToTeam}/>
         </div>
         <div className="col-8">
           <TeamsList teams={this.state.teamList} currentTeam={this.state.team} removeHeroFromTeam={this.removeHeroFromTeam}/>
-        </div>
-      </div>
-    );
+        </div> }
+      )
+    
   }
-}
 
 
 

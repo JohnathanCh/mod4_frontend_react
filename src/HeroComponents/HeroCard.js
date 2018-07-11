@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default class HeroCard extends React.Component {
- 
+
   render() {
     return (
       <li className="card-body" onClick={() => this.props.handleClick(this.props.hero)}>
