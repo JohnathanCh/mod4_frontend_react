@@ -13,9 +13,27 @@ class App extends Component {
 
     this.state = {
       heroList: [],
+      teamList: [],
+      currentTeam: {},
+      loggedIn: false
+    }
+  }
+  
+    teamLogin = (team) => {
+    console.log("team login");
+    console.log(team);
+    
+    this.setState({
+      loggedIn: true,
+      currentTeam: team,
+    })
+  }
+  
+      teamLogout = () => {
+    this.setState({
       loggedIn: false,
       currentTeam: {},
-    }
+    })
   }
 
   componentDidMount() {
@@ -32,38 +50,43 @@ class App extends Component {
     })
   }
 
-  teamLogin = (team) => {
-    console.log("team login");
-    console.log(team);
-    
-    this.setState({
-      loggedIn: true,
-      currentTeam: team,
-    })
 
+  addHeroToTeam = (hero) => {
+    if(this.state.team.includes(hero)) {
+      console.log('Hero is already in your team!');
+    } else {
+      this.setState({
+        team: [...this.state.team, hero]
+      })
+    }
   }
 
-  teamLogout = () => {
+  removeheroFromTeam = (teamHero) => {
+    let index = this.state.team.indexOf(teamHero);
+    let newTeam = this.state.team
+    newTeam.splice(index, 1);
     this.setState({
-      loggedIn: false,
-      currentTeam: {},
+      team: [...newTeam]
     })
   }
+  
+
 
   render() {
-    console.log("App State");
-    console.log(this.state);
-    
-    
+
     return (
-      <div>
-      <NavBar teamLogout={this.teamLogout} loggedIn={this.state.loggedIn} />
-        {this.state.loggedIn === false ? <Login teamLogin={this.teamLogin} /> : <div>
-        <HeroList heroes={this.state.heroList}/>
-        <TeamsList /> </div>}
-      </div>
-    );
+      <div className="row">
+        <div className="col-4">
+        <NavBar teamLogout={this.teamLogout} loggedIn={this.state.loggedIn} />
+        {this.state.loggedIn === false ? <Login teamLogin={this.teamLogin} /> : { <HeroList heroes={this.state.heroList} addHeroToTeam={this.addHeroToTeam}/>
+        </div>
+        <div className="col-8">
+          <TeamsList teams={this.state.teamList} currentTeam={this.state.team} removeHeroFromTeam={this.removeHeroFromTeam}/>
+        </div> }
+      )
+    
   }
-}
+
+
 
 export default App;
