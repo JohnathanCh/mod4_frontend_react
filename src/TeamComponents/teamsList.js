@@ -1,23 +1,18 @@
 import React from 'react';
-// import Team from './team'
+import Team from './team'
 
 class TeamsList extends React.Component {
 
   render() {
-    console.log("teamList Component");
-    console.log(this.props);
     const teams = this.props.teams.map(team => {
-      console.log("map team");
-      console.log(team);
-      return <Team team={team} />
+      return <Team team={team} removeHeroFromTeam={this.props.removeHeroFromTeam}/>
     })
-
 
     return(
       <div className="container team-list">
         <div className="row">
           <div className="col-10">
-            <Team team={this.props.currentTeam} />
+            <Team team={this.props.currentTeam} removeHeroFromTeam={this.props.removeHeroFromTeam} />
             {this.props.teams.length > 0 ? teams : null}
           </div>
         </div>

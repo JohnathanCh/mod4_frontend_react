@@ -12,3 +12,9 @@ ul {
   overflow: scroll;
   height: 750px;
 }
+
+.team {
+  background-color: rgb(225, 227, 232);
+  margin-top: 50px;
+  border-radius: 5px;
+}
