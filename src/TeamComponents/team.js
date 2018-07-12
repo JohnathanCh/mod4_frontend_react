@@ -3,6 +3,7 @@ import HeroCard from '../HeroComponents/HeroCard';
 
 class Team extends React.Component {
   render() {
+
     const teamHeroes = this.props.team.map(teamHero => {
       return <HeroCard key={teamHero.id} hero={teamHero} handleClick={this.props.removeHeroFromTeam}/>
     })

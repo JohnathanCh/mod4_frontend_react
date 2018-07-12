@@ -20,6 +20,7 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchHeroList();
+    this.fetchTeamList();
   }
 
   fetchHeroList() {
@@ -31,7 +32,17 @@ class App extends Component {
       })
     })
 
+  fetchTeamList() {
+    fetch('http://localhost:3000/api/v1/teams')
+    .then(resp => resp.json())
+    .then(teams => {
+      this.setState({
+        teamList: teams
+      })
+    })
   }
+  
+
 
   addHeroToTeam = (hero) => {
     if(this.state.team.includes(hero)) {
@@ -53,7 +64,8 @@ class App extends Component {
   }
 
   render() {
-
+    console.log(this.state.teamList);
+    
    if (this.state.loggedIn === false) {
      return (
        <div className="row">
@@ -81,7 +93,6 @@ class App extends Component {
        )
      }
     }
-
 }
 
 
