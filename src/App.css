@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   /* align-content: center; */
-  /* display: flex; */
+  display: flex;
 }
 
 .App-logo {
@@ -31,7 +31,7 @@
 
 .heroContainer {
   width: 30%;
-  /* display: flex; */
+  display: flex;
   border: 3px solid black;
 }
 
@@ -43,4 +43,8 @@
   align-content: right;
   width: 100px;
   height: 30px;
+}
+
+.navbar {
+  width: 100%;
 }

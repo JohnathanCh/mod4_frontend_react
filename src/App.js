@@ -38,6 +38,7 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchHeroList();
+    this.fetchTeamList();
   }
 
   fetchHeroList() {
@@ -46,6 +47,16 @@ class App extends Component {
     .then(heroList => {
       this.setState({
         heroList
+      })
+    })
+  }
+
+  fetchTeamList() {
+    fetch('http://localhost:3000/api/v1/teams')
+    .then(resp => resp.json())
+    .then(teams => {
+      this.setState({
+        teamList: teams
       })
     })
   }
@@ -73,19 +84,33 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state.teamList);
+    
 
+    if (this.state.loggedIn === false) {
+      return (
+        <div className="row">
+          <div className="col-4">
+          <NavBar teamLogout={this.teamLogout} loggedIn={this.state.loggedIn} />
+          <Login teamLogin={this.teamLogin} />
+          </div>
+        </div>
+      )
+    } else {
     return (
       <div className="row">
         <div className="col-4">
-        <NavBar teamLogout={this.teamLogout} loggedIn={this.state.loggedIn} />
-        {this.state.loggedIn === false ? <Login teamLogin={this.teamLogin} /> : { <HeroList heroes={this.state.heroList} addHeroToTeam={this.addHeroToTeam}/>
+          <NavBar teamLogout={this.teamLogout} loggedIn={this.state.loggedIn} /> 
+          <HeroList heroes={this.state.heroList} addHeroToTeam={this.addHeroToTeam}/>
+          <div className="col-8">
+            <TeamsList teams={this.state.teamList} currentTeam={this.state.team} removeHeroFromTeam={this.removeHeroFromTeam}/>
+          </div> 
         </div>
-        <div className="col-8">
-          <TeamsList teams={this.state.teamList} currentTeam={this.state.team} removeHeroFromTeam={this.removeHeroFromTeam}/>
-        </div> }
+      </div>
       )
-    
+    }
   }
+}
 
 
 
