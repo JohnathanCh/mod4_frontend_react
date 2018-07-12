@@ -3,17 +3,19 @@ import HeroCard from '../HeroComponents/HeroCard';
 
 class Team extends React.Component {
   render() {
-    console.log("Team Card props");
-    console.log(this.props.team);
-    
-    
-    // const teamHeroes = this.props.team.map(teamHero => {
-    //   return <HeroCard hero={teamHero} handleClick={this.props.removeheroFromTeam}/>
-    // })
+
+    const teamHeroes = this.props.team.map(teamHero => {
+      return <HeroCard key={teamHero.id} hero={teamHero} handleClick={this.props.removeHeroFromTeam}/>
+    })
     return(
-      <div>
-        <h1> {this.props.team.name}</h1>
-          {/* {teamHeroes} */}
+      <div className="team container">
+        <div>
+          <ul>
+            <li className="d-flex justify-content-left" style={{width: "10rem"}}>
+              {teamHeroes}
+            </li>
+          </ul>
+        </div>
       </div>
     )
   }
